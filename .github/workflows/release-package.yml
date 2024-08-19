@@ -2,9 +2,9 @@ name: Publish Package
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -24,6 +24,12 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Publish to GitHub Packages
-        run: npm publish --verbose --registry=https://npm.pkg.github.com/
+        run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }} # GitHub token for GitHub Packages
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} # GitHub token for GitHub Packages
+      # Optionally, you can add another step to publish to npm public registry
+      # Only if you want to publish to npm as well
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

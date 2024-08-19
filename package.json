@@ -1,15 +1,12 @@
 {
   "name": "@git21221/form-snippet",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",
   "repository": {
     "url": "https://github.com/git21221/form-snippet.git"
-  },
-  "publishConfig": {
-    "@git21221:registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "build": "npx rollup -c",

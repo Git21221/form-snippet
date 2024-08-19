@@ -7,17 +7,6 @@ import replace from "@rollup/plugin-replace";
 import commonjs from "@rollup/plugin-commonjs";
 import { defineConfig } from "rollup";
 
-function removeUseClientDirective() {
-  return {
-    name: 'remove-use-client-directive',
-    transform(code, id) {
-      if (id.includes('node_modules/@mui/styled-engine/GlobalStyles')) {
-        return code.replace(/'use client';/g, '');
-      }
-    },
-  };
-}
-
 export default defineConfig({
   input: "src/index.ts",
   output: [

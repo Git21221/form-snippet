@@ -30,6 +30,6 @@ jobs:
       # Optionally, you can add another step to publish to npm public registry
       # Only if you want to publish to npm as well
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --registry https://registry.npmjs.org/
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

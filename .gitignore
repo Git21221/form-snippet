@@ -19,3 +19,7 @@ logs/
 # Dependency lock files
 package-lock.json
 yarn.lock
+
+#remove npm rc file
+.npmrc
+.env

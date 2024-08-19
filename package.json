@@ -1,5 +1,5 @@
 {
-  "name": "@git21221/form-snippet",
+  "name": "form-snippet",
   "version": "1.0.4",
   "description": "",
   "main": "dist/index.js",

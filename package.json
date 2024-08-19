@@ -9,7 +9,7 @@
     "url": "https://github.com/git21221/form-snippet.git"
   },
   "publishConfig": {
-    "@git21221:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "npx rollup -c",

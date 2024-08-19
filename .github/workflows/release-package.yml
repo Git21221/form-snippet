@@ -23,10 +23,6 @@ jobs:
           registry-url: https://registry.npmjs.org/ # Set this to npm registry URL
       - run: npm install
       - run: npm run build
-      - name: Publish to npm registry
-        run: npm publish --verbose
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # npm token for public registry
       - name: Publish to GitHub Packages
         run: npm publish --verbose --registry=https://npm.pkg.github.com/
         env:

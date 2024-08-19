@@ -6,7 +6,7 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "repository": {
-    "url": "git://github.com/git21221/form-snippet.git"
+    "url": "https://github.com/git21221/form-snippet.git"
   },
   "publishConfig": {
     "@git21221:registry": "https://npm.pkg.github.com"

@@ -30,4 +30,4 @@ jobs:
       - name: Publish to GitHub Packages
         run: npm publish --verbose --registry=https://npm.pkg.github.com/
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub token for GitHub Packages
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }} # GitHub token for GitHub Packages

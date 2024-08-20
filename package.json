@@ -1,6 +1,6 @@
 {
   "name": "@git21221/form-snippet",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "keywords": [
     "react",
     "mui",
@@ -19,7 +19,10 @@
   },
   "scripts": {
     "build": "npx rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "lint": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "MIT",
@@ -36,12 +39,20 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.2",
     "react-redux": "^9.1.2",
     "rollup": "^4.20.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "tslib": "^2.6.3"
+    "tslib": "^2.6.3",
+    "typescript-eslint": "^8.2.0"
   }
 }

@@ -1,0 +1,8 @@
+# run tests
+# npm test
+
+# Run linting (assuming you have a lint script in package.json)
+npm run lint
+
+# Run Prettier for code formatting
+npm run format

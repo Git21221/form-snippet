@@ -53,48 +53,48 @@ function Input({
   } = useFormContext();
 
   return (
-      <Controller
-        control={control}
-        name={name}
-        defaultValue={defaultValue || ""}
-        rules={{
-          required: required && `${label} is required`,
-          minLength: {
-            value: minLength,
-            message: `${label} must be at least ${minLength} characters`,
-          },
-          maxLength: {
-            value: maxLength,
-            message: `${label} must not exceed ${maxLength} characters`,
-          },
-          pattern: {
-            value: validation?.pattern?.value,
-            message: validation?.pattern?.message,
-          },
-          validate: customValidation,
-        }}
-        render={({ field }) => (
-          <TextField
-            type={type || "text"}
-            disabled={disabled}
-            {...field}
-            id={name}
-            label={label}
-            fullWidth
-            variant={variant || "outlined"}
-            size={size || "small"}
-            value={field.value || ""}
-            error={!!errors[name]}
-            helperText={errors[name]?.message as string}
-            onBlur={field.onBlur}
-            required={required}
-            autoComplete="on"
-            inputProps={{
-              readOnly,
-            }}
-          />
-        )}
-      />
+    <Controller
+      control={control}
+      name={name}
+      defaultValue={defaultValue || ""}
+      rules={{
+        required: required && `${label} is required`,
+        minLength: {
+          value: minLength,
+          message: `${label} must be at least ${minLength} characters`,
+        },
+        maxLength: {
+          value: maxLength,
+          message: `${label} must not exceed ${maxLength} characters`,
+        },
+        pattern: {
+          value: validation?.pattern?.value,
+          message: validation?.pattern?.message,
+        },
+        validate: customValidation,
+      }}
+      render={({ field }) => (
+        <TextField
+          type={type || "text"}
+          disabled={disabled}
+          {...field}
+          id={name}
+          label={label}
+          fullWidth
+          variant={variant || "outlined"}
+          size={size || "small"}
+          value={field.value || ""}
+          error={!!errors[name]}
+          helperText={errors[name]?.message as string}
+          onBlur={field.onBlur}
+          required={required}
+          autoComplete="on"
+          inputProps={{
+            readOnly,
+          }}
+        />
+      )}
+    />
   );
 }
 

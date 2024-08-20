@@ -1,10 +1,9 @@
 ---
 name: Pull request
 about: Maintain this format while making a PR
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ## Description

@@ -15,17 +15,17 @@ type PropsType = {
 };
 
 const Button = ({
-                        content,
-                        disabled,
-                        href,
-                        variant = "contained",
-                        size = "medium",
-                        color = "primary",
-                        disableElevation,
-                        startIcon,
-                        endIcon,
-                        ...props
-                      }: PropsType) => {
+  content,
+  disabled,
+  href,
+  variant = "contained",
+  size = "medium",
+  color = "primary",
+  disableElevation,
+  startIcon,
+  endIcon,
+  ...props
+}: PropsType) => {
   const isStandardColor = [
     "inherit",
     "primary",

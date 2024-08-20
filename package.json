@@ -1,7 +1,7 @@
 {
   "name": "@git21221/form-snippet",
-  "version": "1.0.22",
-  "description": "",
+  "version": "1.0.23",
+  "description": "A simple form that made on top of MUI components and uses react hook form for validation.",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",

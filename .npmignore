@@ -1,1 +1,19 @@
+# Ignore source code
 src/
+
+# Ignore development directories
+node_modules/
+
+# Ignore configuration and misc files
+.gitignore
+.npmrc
+package-lock.json
+tsconfig.json
+rollup.config.js
+
+# Optionally include or exclude documentation
+# Include LICENSE
+# Exclude
+CODE_OF_CONDUCT.md
+CONTRIBUTING
+SECURITY.md

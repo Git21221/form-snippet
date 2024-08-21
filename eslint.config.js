@@ -1,7 +1,6 @@
 import { ESLint } from "eslint";
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
 
-// Create an instance of ESLint with the necessary configuration
 const eslint = new ESLint({
   overrideConfig: {
     plugins: {
@@ -10,14 +9,11 @@ const eslint = new ESLint({
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
-      parser: "@typescript-eslint/parser", // Specify the parser here
+      parser: "@typescript-eslint/parser",
     },
     extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
     ignores: ["node_modules", "dist"],
     files: ["**/*.{js,jsx,ts,tsx}"],
-    rules: {
-      // Your custom rules here
-    },
   },
 });
 

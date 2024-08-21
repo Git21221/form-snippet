@@ -1,7 +1,9 @@
 import * as React from "react";
-// import styles from "./input.module.css";
 import { Controller, useFormContext, ValidateResult } from "react-hook-form";
 import TextField from "@mui/material/TextField";
+import { IconButton, InputAdornment } from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 type InputProps = {
   label: string;
@@ -26,10 +28,13 @@ type InputProps = {
   readOnly?: boolean;
   minLength?: number;
   maxLength?: number;
-  validation?: any;
+  pattern?: any;
   customValidation?: (value: any) => ValidateResult | Promise<ValidateResult>;
   required?: boolean;
   defaultValue?: string;
+  multiline?: any;
+  startIcon?: string | React.ReactElement;
+  endIcon?: string | React.ReactElement;
 };
 
 function Input({
@@ -42,16 +47,24 @@ function Input({
   readOnly,
   minLength = 0,
   maxLength = 150,
-  validation = {},
+  pattern = {},
   customValidation,
   required,
   defaultValue,
+  multiline,
+  startIcon,
+  endIcon,
 }: InputProps) {
   const {
     control,
     formState: { errors },
   } = useFormContext();
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleShowPasswordClick = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) =>
+    e.preventDefault();
   return (
     <Controller
       control={control}
@@ -68,14 +81,14 @@ function Input({
           message: `${label} must not exceed ${maxLength} characters`,
         },
         pattern: {
-          value: validation?.pattern?.value,
-          message: validation?.pattern?.message,
+          value: pattern?.value,
+          message: pattern?.message,
         },
         validate: customValidation,
       }}
       render={({ field }) => (
         <TextField
-          type={type || "text"}
+          type={showPassword && type === "password" ? "text" : type || "text"}
           disabled={disabled}
           {...field}
           id={name}
@@ -89,8 +102,47 @@ function Input({
           onBlur={field.onBlur}
           required={required}
           autoComplete="on"
-          inputProps={{
+          multiline={!!multiline}
+          {...(multiline?.staticRow
+            ? {
+                rows: multiline.staticRow,
+              }
+            : multiline?.flexible
+              ? {
+                  maxRows: multiline.flexible,
+                }
+              : {})}
+          InputProps={{
             readOnly,
+            ...(startIcon
+              ? {
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      {startIcon}
+                    </InputAdornment>
+                  ),
+                }
+              : {}),
+            ...(endIcon
+              ? {
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {type === "password" ? (
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleShowPasswordClick}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      ) : (
+                        endIcon
+                      )}
+                    </InputAdornment>
+                  ),
+                }
+              : {}),
           }}
         />
       )}

@@ -6,6 +6,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 type InputProps = {
+  sx?: Record<string, any>;
   label: string;
   name: string;
   type?:
@@ -28,16 +29,22 @@ type InputProps = {
   readOnly?: boolean;
   minLength?: number;
   maxLength?: number;
-  pattern?: any;
+  fullWidth?: boolean;
+  pattern?: {
+    value: RegExp;
+    message: string;
+  };
   customValidation?: (value: any) => ValidateResult | Promise<ValidateResult>;
   required?: boolean;
   defaultValue?: string;
   multiline?: any;
   startIcon?: string | React.ReactElement;
   endIcon?: string | React.ReactElement;
+  autoComplete?: "on" | "off";
 };
 
 function Input({
+  sx,
   type,
   label,
   name,
@@ -47,13 +54,15 @@ function Input({
   readOnly,
   minLength = 0,
   maxLength = 150,
-  pattern = {},
+  fullWidth,
+  pattern,
   customValidation,
   required,
   defaultValue,
   multiline,
   startIcon,
   endIcon,
+  autoComplete,
 }: InputProps) {
   const {
     control,
@@ -72,77 +81,65 @@ function Input({
       defaultValue={defaultValue || ""}
       rules={{
         required: required && `${label} is required`,
-        minLength: {
+        minLength: minLength && {
           value: minLength,
           message: `${label} must be at least ${minLength} characters`,
         },
-        maxLength: {
+        maxLength: maxLength && {
           value: maxLength,
           message: `${label} must not exceed ${maxLength} characters`,
         },
-        pattern: {
-          value: pattern?.value,
-          message: pattern?.message,
+        pattern: pattern && {
+          value: pattern.value,
+          message: pattern.message,
         },
         validate: customValidation,
       }}
       render={({ field }) => (
         <TextField
+          sx={sx}
           type={showPassword && type === "password" ? "text" : type || "text"}
           disabled={disabled}
           {...field}
           id={name}
           label={label}
-          fullWidth
+          fullWidth={fullWidth}
           variant={variant || "outlined"}
           size={size || "small"}
           value={field.value || ""}
           error={!!errors[name]}
-          helperText={errors[name]?.message as string}
+          helperText={errors[name]?.message}
           onBlur={field.onBlur}
           required={required}
-          autoComplete="on"
+          autoComplete={autoComplete}
           multiline={!!multiline}
-          {...(multiline?.staticRow
-            ? {
-                rows: multiline.staticRow,
-              }
-            : multiline?.flexible
-              ? {
-                  maxRows: multiline.flexible,
-                }
-              : {})}
+          {...(multiline?.staticRow && { rows: multiline.staticRow })}
+          {...(multiline?.flexible && { maxRows: multiline.flexible })}
           InputProps={{
             readOnly,
-            ...(startIcon
-              ? {
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {startIcon}
-                    </InputAdornment>
-                  ),
-                }
-              : {}),
-            ...(endIcon
-              ? {
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      {type === "password" ? (
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleShowPasswordClick}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      ) : (
-                        endIcon
-                      )}
-                    </InputAdornment>
-                  ),
-                }
-              : {}),
+            ...(startIcon && {
+              startAdornment: (
+                <InputAdornment position="start">{startIcon}</InputAdornment>
+              ),
+            }),
+            ...(endIcon && {
+              endAdornment: (
+                <InputAdornment position="end">
+                  {type === "password" ? (
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleShowPasswordClick}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  ) : (
+                    endIcon
+                  )}
+                </InputAdornment>
+              ),
+            }),
           }}
         />
       )}

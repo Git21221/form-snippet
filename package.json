@@ -4,8 +4,17 @@
   "keywords": [
     "react",
     "mui",
+    "material-ui",
     "form",
-    "react-hook-form"
+    "react-hook-form",
+    "form-validation",
+    "select-input",
+    "checkbox",
+    "typescript",
+    "controlled-components",
+    "react-components",
+    "react-form",
+    "custom-input"
   ],
   "description": "A simple form that made on top of MUI components and uses react hook form for validation.",
   "main": "dist/index.js",

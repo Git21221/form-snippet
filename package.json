@@ -33,7 +33,7 @@
     "lint": "eslint . --fix",
     "format": "prettier --write ."
   },
-  "author": "",
+  "author": "Saikat Das",
   "license": "MIT",
   "devDependencies": {
     "@emotion/react": "^11.13.0",

@@ -118,7 +118,9 @@ function SelectInput({
             }}
             renderValue={handleRenderValue}
           >
-            <MenuItem disabled value="">{placeholderText}</MenuItem>
+            <MenuItem disabled value="">
+              {placeholderText}
+            </MenuItem>
             {options &&
               options.map((option) => (
                 <MenuItem key={option.value} value={option.value}>

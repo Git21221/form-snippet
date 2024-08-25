@@ -3,7 +3,9 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import { Controller, useFormContext, ValidateResult } from "react-hook-form";
 import {
+  Box,
   Checkbox,
+  Chip,
   FormControl,
   FormHelperText,
   ListItemText,
@@ -37,6 +39,7 @@ type InputProps = {
   };
   customValidation?: (value: any) => ValidateResult | Promise<ValidateResult>;
   fullWidth?: boolean;
+  renderStyle?: "default" | "chip" | ((selected: any) => React.ReactNode);
 };
 
 function SelectInput({
@@ -56,6 +59,7 @@ function SelectInput({
   customValidation,
   multiple,
   fullWidth,
+  renderStyle,
 }: InputProps) {
   const {
     control,
@@ -66,14 +70,27 @@ function SelectInput({
     ? label
     : `Select a ${label}`;
 
-  const handleRenderValue = (selected: any) =>
+  const handleRenderDefaultValue = (selected: any) =>
     Array.isArray(selected)
       ? selected
           .map(
             (value) => options?.find((option) => option.value === value)?.label
           )
           .join(", ")
-      : selected;
+      : options?.find((option) => option.value === selected)?.label || selected;
+
+  const handleRenderChipValue = (selected: any) => (
+    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+      {selected.map((value: any) => (
+        <Chip
+          key={value}
+          label={
+            options?.find((option) => option.value === value)?.label || value
+          }
+        />
+      ))}
+    </Box>
+  );
 
   return (
     <Controller
@@ -104,7 +121,7 @@ function SelectInput({
           fullWidth={fullWidth}
           variant={variant || "outlined"}
           size={size || "small"}
-          sx={{ minWidth: !fullWidth ? 120 : "auto", ...sx }}
+          sx={{ minWidth: !fullWidth ? 120 : "auto", fontFamily: "inherit", ...sx }}
         >
           <InputLabel id={`${name}-label`}>{label}</InputLabel>
           <Select
@@ -116,7 +133,15 @@ function SelectInput({
             onChange={(event: SelectChangeEvent<typeof field.value>) => {
               field.onChange(event);
             }}
-            renderValue={handleRenderValue}
+            renderValue={(selected) => {
+              if (typeof renderStyle === "function") {
+                return renderStyle(selected);
+              } else if (renderStyle === "chip") {
+                return handleRenderChipValue(selected);
+              } else {
+                return handleRenderDefaultValue(selected);
+              }
+            }}
           >
             <MenuItem disabled value="">
               {placeholderText}

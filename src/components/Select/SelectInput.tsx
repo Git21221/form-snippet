@@ -121,7 +121,11 @@ function SelectInput({
           fullWidth={fullWidth}
           variant={variant || "outlined"}
           size={size || "small"}
-          sx={{ minWidth: !fullWidth ? 120 : "auto", fontFamily: "inherit", ...sx }}
+          sx={{
+            minWidth: !fullWidth ? 120 : "auto",
+            fontFamily: "inherit",
+            ...sx,
+          }}
         >
           <InputLabel id={`${name}-label`}>{label}</InputLabel>
           <Select

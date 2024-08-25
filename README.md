@@ -22,11 +22,17 @@ Install form-snippet with github packages
 ```
 
 ## Usage/Examples
+
 #### A signup form using form-snippet, took less than 50 lines of code and proper validation.
 
 ```javascript
 import React from "react";
-import { Button, Input, FormWrapper, SelectInput } from "@git21221/form-snippet";
+import {
+  Button,
+  Input,
+  FormWrapper,
+  SelectInput,
+} from "@git21221/form-snippet";
 import { months, dates, years, skills } from "./data/data";
 
 function App() {
@@ -39,29 +45,70 @@ function App() {
       <div className="max-w-[400px] p-3 flex flex-col gap-3 shadow-2xl rounded-lg">
         <h1 className="text-xl">Signup using form-snippet</h1>
         <div className="flex gap-3">
-          <Input name="fName" label="First Name" required type={"text"} fullWidth
+          <Input
+            name="fName"
+            label="First Name"
+            required
+            type={"text"}
+            fullWidth
           />
-          <Input name="lName" label="Last Name" required type={"text"} fullWidth
+          <Input
+            name="lName"
+            label="Last Name"
+            required
+            type={"text"}
+            fullWidth
           />
         </div>
         <div className="">
-          <Input name="pass" label="Password" type="password" fullWidth endIcon
+          <Input
+            name="pass"
+            label="Password"
+            type="password"
+            fullWidth
+            endIcon
           />
         </div>
         <div className="">
-          <Input name="mobile" label="Mobile number or email" type={"text"} fullWidth
+          <Input
+            name="mobile"
+            label="Mobile number or email"
+            type={"text"}
+            fullWidth
           />
         </div>
         <div className="flex gap-3">
-          <SelectInput name="month" label="Month" options={months} required fullWidth
+          <SelectInput
+            name="month"
+            label="Month"
+            options={months}
+            required
+            fullWidth
           />
-          <SelectInput name="date" label="Date" options={dates} required fullWidth
+          <SelectInput
+            name="date"
+            label="Date"
+            options={dates}
+            required
+            fullWidth
           />
-          <SelectInput name="year" label="Year" options={years} required fullWidth
+          <SelectInput
+            name="year"
+            label="Year"
+            options={years}
+            required
+            fullWidth
           />
         </div>
         <div>
-          <SelectInput name="skills" label="Skills" options={skills} fullWidth multiple={{checkBox:true}} renderStyle={"chip"} />
+          <SelectInput
+            name="skills"
+            label="Skills"
+            options={skills}
+            fullWidth
+            multiple={{ checkBox: true }}
+            renderStyle={"chip"}
+          />
         </div>
         <Button content={"Submit"} />
       </div>
@@ -70,7 +117,6 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## Contributing

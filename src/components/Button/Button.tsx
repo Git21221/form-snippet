@@ -2,6 +2,20 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { Button as MUIButton } from "@mui/material";
 
+/**
+ * @typedef {Object} ButtonProps
+ * @property {React.ReactNode} content - The content of the Button component
+ * @property {boolean} [disabled] - Whether the Button component is disabled
+ * @property {string} [href] - The URL to link to when the Button component is clicked
+ * @property {"text" | "outlined" | "contained"} [variant] - The variant of the Button component
+ * @property {"small" | "medium" | "large"} [size] - The size of the Button component
+ * @property {"inherit" | "primary" | "secondary" | "success" | "error" | string} [color] - The color of the Button component
+ * @property {boolean} [disableElevation] - Whether to disable the button elevation
+ * @property {React.ReactNode} [startIcon] - The icon to display at the start of the Button component
+ * @property {React.ReactNode} [endIcon] - The icon to display at the end of the Button component
+ * @returns {JSX.Element} - The JSX element of the Button component
+ */
+
 type PropsType = {
   content: ReactNode;
   disabled?: boolean;

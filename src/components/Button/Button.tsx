@@ -17,7 +17,7 @@ import { Button as MUIButton } from "@mui/material";
  */
 
 type PropsType = {
-  content: ReactNode;
+  children: ReactNode;
   disabled?: boolean;
   href?: string;
   variant?: "text" | "outlined" | "contained";
@@ -26,13 +26,14 @@ type PropsType = {
   disableElevation?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  onClick?: (e: any) => void;
 };
 
 const Button = ({
-  content,
+  children,
   disabled,
   href,
-  variant = "contained",
+  variant,
   size = "medium",
   color = "primary",
   disableElevation,
@@ -60,7 +61,7 @@ const Button = ({
       endIcon={endIcon}
       {...props}
     >
-      {content}
+      {children}
     </MUIButton>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ButtonGroup as MUIButtonGroup } from "@mui/material";
+import { Button, ButtonGroup as MUIButtonGroup } from "@mui/material";
 
 /**
  * @typedef {Object} ButtonGroupProps
@@ -17,6 +17,7 @@ type PropsType = {
   size?: "small" | "medium" | "large";
   color?: "inherit" | "primary" | "secondary" | "success" | "error" | string;
   orientation?: "horizontal" | "vertical";
+  disableElevation?: boolean;
 };
 
 const ButtonGroup = ({
@@ -25,6 +26,7 @@ const ButtonGroup = ({
   size = "medium",
   color = "primary",
   orientation,
+  disableElevation,
 }: PropsType) => {
   const isStandardColor = [
     "inherit",
@@ -39,8 +41,25 @@ const ButtonGroup = ({
       size={size}
       color={isStandardColor ? (color as any) : undefined}
       orientation={orientation}
+      disableElevation={disableElevation}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (
+          React.isValidElement(child) &&
+          (child as React.ReactElement).type === Button
+        ) {
+          // Cast the child to a ReactElement with the correct props type
+          const buttonChild = child as React.ReactElement<{
+            variant?: "text" | "outlined" | "contained";
+          }>;
+
+          console.log(buttonChild.props.variant);
+          return React.cloneElement(buttonChild, {
+            variant: buttonChild.props.variant || variant,
+          });
+        }
+        return child;
+      })}
     </MUIButtonGroup>
   );
 };

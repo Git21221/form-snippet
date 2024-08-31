@@ -55,7 +55,7 @@ const ButtonDropdown = ({ options, sx }: ButtonDropdownProps) => {
         </Button>
       </ButtonGroup>
       <Popper
-        sx={{...sx, zIndex: 4 }}
+        sx={{ ...sx, zIndex: 4 }}
         open={open}
         anchorEl={anchorRef.current}
         transition

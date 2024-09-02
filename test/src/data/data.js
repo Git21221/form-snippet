@@ -1,6 +1,16 @@
 export const monthNames = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
 export const months = monthNames.map((name, i) => ({
@@ -50,9 +60,4 @@ export const skills = [
   { label: "Performance Optimization", value: "performance_optimization" },
 ];
 
-export const options = [
-  "Edit",
-  "Delete",
-  "Duplicate",
-  "Move to",
-]
+export const options = ["Edit", "Delete", "Duplicate", "Move to"];

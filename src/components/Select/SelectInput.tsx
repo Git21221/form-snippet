@@ -17,7 +17,7 @@ type Option = {
   label: string;
 };
 
-type InputProps = {
+export type InputProps = {
   name: string;
   label: string;
   defaultValue?: string;

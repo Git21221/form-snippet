@@ -11,7 +11,13 @@ import {
   Popper,
 } from "@mui/material";
 
-type ButtonDropdownProps = {
+/**
+ * @typedef {Object} ButtonDropdownProps
+ * @property {string[]} options - The options for the ButtonDropdown component
+ * @property {React.CSSProperties} [sx] - custom style for the ButtonDropdown component
+ */
+
+export type ButtonDropdownProps = {
   options: string[];
   sx?: React.CSSProperties;
 };

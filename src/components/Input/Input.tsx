@@ -6,6 +6,12 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 /**
+ * @typedef {Object} MultilineConfig
+ * @property {number} [staticRow] - Number of rows for the multiline Input component.
+ * @property {boolean} [flexible] - Whether the multiline Input component is flexible with maxRows.
+ */
+
+/**
  * @typedef {Object} InputProps
  * @property {Record<string, any>} [sx] - custom style for the Input component
  * @property {string} label - label for the Input component
@@ -36,10 +42,13 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
  * @returns {JSX.Element} - The JSX element of the Input component
  */
 
-type InputProps = {
+export type InputProps = {
   sx?: Record<string, any>;
   label: string;
   name: string;
+  /**
+   * @param {{type: "text" | "password" | "email" | "number" | "tel" | "url" | "search" | "date" | "time" | "datetime-local" | "month" | "week" | "color"}}
+   */
   type?:
     | "text"
     | "password"
@@ -54,7 +63,13 @@ type InputProps = {
     | "month"
     | "week"
     | "color";
+  /**
+   * @param {{variant: "outlined" | "filled" | "standard"}}
+   */
   variant?: "outlined" | "filled" | "standard";
+  /**
+   * @param {{size: "small" | "medium"}}
+   */
   size?: "small" | "medium";
   disabled?: boolean;
   readOnly?: boolean;
@@ -71,6 +86,9 @@ type InputProps = {
   multiline?: any;
   startIcon?: string | React.ReactElement;
   endIcon?: string | React.ReactElement;
+  /**
+   * @param {{autoComplete: "on" | "off"}}
+   */
   autoComplete?: "on" | "off";
 };
 

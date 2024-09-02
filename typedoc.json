@@ -1,0 +1,12 @@
+{
+  "out": "docs",
+  "entryPoints": ["src/index.ts"], 
+  "exclude": ["node_modules/**", "src/**/__tests__/**"],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "hideGenerator": true,
+  "name": "Form Snippet",
+  "theme": "default",
+}

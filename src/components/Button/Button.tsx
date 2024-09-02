@@ -16,7 +16,7 @@ import { Button as MUIButton } from "@mui/material";
  * @returns {JSX.Element} - The JSX element of the Button component
  */
 
-type PropsType = {
+export type PropsType = {
   children: ReactNode;
   disabled?: boolean;
   href?: string;

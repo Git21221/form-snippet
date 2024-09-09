@@ -1,6 +1,6 @@
 {
   "name": "@git21221/form-snippet",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "keywords": [
     "react",
     "mui",
@@ -23,7 +23,7 @@
   "repository": {
     "url": "https://github.com/git21221/form-snippet.git"
   },
-  "readme": "https://docs-form-snippet.vercel.app/",
+  "homepage": "https://docs-form-snippet.vercel.app/",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

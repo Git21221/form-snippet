@@ -17,7 +17,7 @@ type Option = {
   label: string;
 };
 
-export type InputProps = {
+export type SelectInputProps = {
   name: string;
   label: string;
   defaultValue?: string;
@@ -60,7 +60,7 @@ function SelectInput({
   multiple,
   fullWidth,
   renderStyle,
-}: InputProps) {
+}: SelectInputProps) {
   const {
     control,
     formState: { errors },

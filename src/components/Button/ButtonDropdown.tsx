@@ -15,6 +15,7 @@ import {
  * @typedef {Object} ButtonDropdownProps
  * @property {string[]} options - The options for the ButtonDropdown component
  * @property {React.CSSProperties} [sx] - custom style for the ButtonDropdown component
+ * @returns {JSX.Element} - The JSX element of the ButtonDropdown component
  */
 
 export type ButtonDropdownProps = {

@@ -13,6 +13,7 @@ import { Button as MUIButton } from "@mui/material";
  * @property {boolean} [disableElevation] - Whether to disable the button elevation
  * @property {React.ReactNode} [startIcon] - The icon to display at the start of the Button component
  * @property {React.ReactNode} [endIcon] - The icon to display at the end of the Button component
+ * @property {(e: any) => void} [onClick] - The function to call when the Button component is clicked
  * @returns {JSX.Element} - The JSX element of the Button component
  */
 

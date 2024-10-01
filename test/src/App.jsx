@@ -25,6 +25,7 @@ function App() {
             required
             type="text"
             fullWidth
+            className={"bg-black font-mono font-bold"}
           />
           <Input
             name="lName"

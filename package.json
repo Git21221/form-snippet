@@ -71,5 +71,9 @@
     "typedoc": "^0.26.6",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tw-merge": "^0.0.1-alpha.3"
   }
 }

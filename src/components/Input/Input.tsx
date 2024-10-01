@@ -92,7 +92,7 @@ export type InputProps = {
    * @param {{autoComplete: "on" | "off"}}
    */
   autoComplete?: "on" | "off";
-  className:string
+  className: string;
 };
 
 function Input({
@@ -115,7 +115,7 @@ function Input({
   startIcon,
   endIcon,
   autoComplete,
-  className
+  className,
 }: InputProps) {
   const {
     control,
@@ -141,7 +141,7 @@ function Input({
       className // Tailwind classes should be at the end
     )
   );
-  
+
   return (
     <Controller
       control={control}

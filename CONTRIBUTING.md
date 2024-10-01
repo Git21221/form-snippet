@@ -25,7 +25,7 @@ Feature requests are welcome! If you have an idea to improve the package, please
 5. **Push your branch** to your forked repository:
     ```bash
     git push origin my-new-feature
-6. **Open a pull request** to the `main` branch of the `form-snippet` repository.
+6. **Open a pull request** to the `dev` branch of the `form-snippet` repository.
 
 ### Code Style
 Please follow the existing code style in the project. Consistent code style helps maintain readability and makes it easier for everyone to contribute. Ensure that your code passes all linting and formatting checks before submitting.

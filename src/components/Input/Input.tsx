@@ -36,6 +36,7 @@ import clsx from "clsx";
  * @property {string | React.ReactElement} [startIcon] - icon or text to display at the start of the Input component
  * @property {string | React.ReactElement} [endIcon] - icon or text to display at the end of the Input component
  * @property {"on" | "off"} [autoComplete] - whether the Input component should have autocomplete enabled
+ * @property {string} [className] - User defined tailwind classes to override default mui classes
  */
 
 /**
@@ -92,7 +93,10 @@ export type InputProps = {
    * @param {{autoComplete: "on" | "off"}}
    */
   autoComplete?: "on" | "off";
-  className: string;
+  /**
+   * @param {string} [className] - User-defined Tailwind classes to override default Material-UI classes.
+   */
+  className?: string;
 };
 
 function Input({

@@ -136,3 +136,16 @@ Original author of `form-snippet`
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Contributing People List
+
+> Contributions are welcome!
+
+Specially thanks ❤️ for contributors bellow:
+
+<a href="https://github.com/jahnvisahni31/github-readme-profile/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Git21221/form-snippet" />
+</a>
+
+## Contributors

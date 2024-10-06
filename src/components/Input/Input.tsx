@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { twMerge } from "tw-merge";
+import clsx from "clsx";
 
 /**
  * @typedef {Object} MultilineConfig
@@ -34,6 +36,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
  * @property {string | React.ReactElement} [startIcon] - icon or text to display at the start of the Input component
  * @property {string | React.ReactElement} [endIcon] - icon or text to display at the end of the Input component
  * @property {"on" | "off"} [autoComplete] - whether the Input component should have autocomplete enabled
+ * @property {string} [className] - User defined tailwind classes to override default mui classes
  */
 
 /**
@@ -90,6 +93,10 @@ export type InputProps = {
    * @param {{autoComplete: "on" | "off"}}
    */
   autoComplete?: "on" | "off";
+  /**
+   * @param {string} [className] - User-defined Tailwind classes to override default Material-UI classes.
+   */
+  className?: string;
 };
 
 function Input({
@@ -112,6 +119,7 @@ function Input({
   startIcon,
   endIcon,
   autoComplete,
+  className,
 }: InputProps) {
   const {
     control,
@@ -123,6 +131,21 @@ function Input({
   const handleShowPasswordClick = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) =>
     e.preventDefault();
+
+  const muiDefaultClasses = twMerge(
+    clsx(
+      // MUI classes first
+      "MuiTextField-root",
+      variant === "outlined" ? "MuiOutlinedInput-root" : "",
+      variant === "filled" ? "MuiFilledInput-root" : "",
+      variant === "standard" ? "MuiInput-root" : "",
+      disabled ? "Mui-disabled" : "",
+      errors[name] ? "Mui-error" : "",
+      // Tailwind classes last
+      className // Tailwind classes should be at the end
+    )
+  );
+
   return (
     <Controller
       control={control}
@@ -190,6 +213,7 @@ function Input({
               ),
             }),
           }}
+          className={muiDefaultClasses}
         />
       )}
     />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Input,
@@ -6,12 +6,43 @@ import {
   SelectInput,
   ButtonGroup,
   ButtonDropdown,
+  ButtonLoader
 } from "@git21221/form-snippet";
 import { months, dates, years, skills, options } from "./data/data";
 
 function App() {
-  const handleSubmit = (data) => {
-    console.log(data);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (data) => {
+    console.log("Form Data Submitted:", data);
+    setIsLoading(true); 
+
+    try {
+      // Example API call using fetch
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("API Response:", result);
+
+      // Optionally, handle success (e.g., show a success message, redirect, etc.)
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("API Error:", error);
+      // Optionally, handle errors (e.g., show an error message)
+      alert("There was an error submitting the form.");
+    } finally {
+      setIsLoading(false); // Stop loading
+    }
   };
 
   return (
@@ -49,6 +80,7 @@ function App() {
             label="Mobile number or email"
             type={"text"}
             fullWidth
+            required
           />
         </div>
         <div className="flex gap-3">
@@ -86,9 +118,18 @@ function App() {
         </div>
         <ButtonGroup variant={"outlined"}>
           <Button children={"Submit"} variant={"contained"} disableElevation />
-          <Button children={"Submit"} />
+          <Button children={"Cancel"} variant={"outlined"} />
         </ButtonGroup>
         <ButtonDropdown options={options} />
+        <ButtonLoader
+          type="Submit"
+          variant="contained"
+          isLoading={isLoading}
+          disableElevation
+          loadingPosition="start"
+        >
+          Submit
+        </ButtonLoader>
       </div>
     </FormWrapper>
   );

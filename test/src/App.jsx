@@ -6,7 +6,7 @@ import {
   SelectInput,
   ButtonGroup,
   ButtonDropdown,
-  ButtonLoader
+  ButtonLoader,
 } from "@git21221/form-snippet";
 import { months, dates, years, skills, options } from "./data/data";
 
@@ -15,17 +15,20 @@ function App() {
 
   const handleSubmit = async (data) => {
     console.log("Form Data Submitted:", data);
-    setIsLoading(true); 
+    setIsLoading(true);
 
     try {
       // Example API call using fetch
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);

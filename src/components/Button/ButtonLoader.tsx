@@ -4,7 +4,13 @@ import { Button, CircularProgress, ButtonProps } from "@mui/material";
 export interface ButtonLoaderProps
   extends Omit<
     ButtonProps,
-    "children" | "startIcon" | "endIcon" | "disabled" | "color" | "variant" | "size"
+    | "children"
+    | "startIcon"
+    | "endIcon"
+    | "disabled"
+    | "color"
+    | "variant"
+    | "size"
   > {
   children: React.ReactNode;
   isLoading: boolean;
@@ -43,11 +49,11 @@ const ButtonLoader: React.FC<ButtonLoaderProps> = ({
     <CircularProgress
       size={20}
       color={isStandardColor ? "inherit" : "primary"}
-      
     />
   );
 
-  const startIcon = isLoading && loadingPosition === "start" ? loader : undefined;
+  const startIcon =
+    isLoading && loadingPosition === "start" ? loader : undefined;
   const endIcon = isLoading && loadingPosition === "end" ? loader : undefined;
 
   return (
@@ -62,7 +68,7 @@ const ButtonLoader: React.FC<ButtonLoaderProps> = ({
       endIcon={endIcon}
       {...rest}
     >
-      {isLoading?"Loading": children}
+      {isLoading ? "Loading" : children}
     </Button>
   );
 };

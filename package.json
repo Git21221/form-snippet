@@ -62,7 +62,7 @@
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.52.2",
+    "react-hook-form": "^7.53.0",
     "react-icons": "^5.3.0",
     "react-redux": "^9.1.2",
     "rollup": "^4.20.0",
@@ -73,7 +73,6 @@
     "typescript-eslint": "^8.2.0"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "tw-merge": "^0.0.1-alpha.3"
+    "@mui/x-date-pickers": "^7.19.0"
   }
 }

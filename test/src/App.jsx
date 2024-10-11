@@ -18,7 +18,6 @@ function App() {
     setIsLoading(true);
 
     try {
-      // Example API call using fetch
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/posts",
         {
@@ -37,14 +36,13 @@ function App() {
       const result = await response.json();
       console.log("API Response:", result);
 
-      // Optionally, handle success (e.g., show a success message, redirect, etc.)
       alert("Form submitted successfully!");
     } catch (error) {
       console.error("API Error:", error);
-      // Optionally, handle errors (e.g., show an error message)
+      
       alert("There was an error submitting the form.");
     } finally {
-      setIsLoading(false); // Stop loading
+      setIsLoading(false); 
     }
   };
 

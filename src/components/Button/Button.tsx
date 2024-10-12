@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ReactNode } from "react";
-import { Button as MUIButton } from "@mui/material";
+import { CircularProgress, Button as MUIButton } from "@mui/material";
 
 /**
  * @typedef {Object} ButtonProps
@@ -19,6 +19,7 @@ import { Button as MUIButton } from "@mui/material";
 
 export type PropsType = {
   children: ReactNode;
+  isLoading: boolean;
   disabled?: boolean;
   href?: string;
   variant?: "text" | "outlined" | "contained";
@@ -27,19 +28,22 @@ export type PropsType = {
   disableElevation?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  type?: "button" | "submit" | "reset";
+  loadingPosition?: "start" | "end";
   onClick?: (e: any) => void;
 };
 
-const Button = ({
+const Button:React.FC<PropsType>  = ({
   children,
   disabled,
   href,
+  isLoading,
   variant,
   size = "medium",
   color = "primary",
+  type="button",
   disableElevation,
-  startIcon,
-  endIcon,
+  loadingPosition = "end",
   ...props
 }: PropsType) => {
   const isStandardColor = [
@@ -49,20 +53,29 @@ const Button = ({
     "success",
     "error",
   ].includes(color);
+
+  const loader = (
+    <CircularProgress
+      size={20}
+      color={isStandardColor ? "inherit" : "primary"}
+    />
+  );
+  const startIcon =isLoading && loadingPosition === "start" ? loader : undefined;
+  const endIcon = isLoading && loadingPosition === "end" ? loader : undefined;
   return (
     <MUIButton
-      type="submit"
+      type={type}
       variant={variant}
       size={size}
       color={isStandardColor ? (color as any) : undefined}
       href={href}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       disableElevation={disableElevation}
       startIcon={startIcon}
       endIcon={endIcon}
       {...props}
     >
-      {children}
+      {isLoading ? "Loading" : children}
     </MUIButton>
   );
 };

@@ -6,7 +6,6 @@ import {
   SelectInput,
   ButtonGroup,
   ButtonDropdown,
-  ButtonLoader,
 } from "@git21221/form-snippet";
 import { months, dates, years, skills, options } from "./data/data";
 
@@ -39,10 +38,10 @@ function App() {
       alert("Form submitted successfully!");
     } catch (error) {
       console.error("API Error:", error);
-      
+
       alert("There was an error submitting the form.");
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 
@@ -122,7 +121,7 @@ function App() {
           <Button children={"Cancel"} variant={"outlined"} />
         </ButtonGroup>
         <ButtonDropdown options={options} />
-        <ButtonLoader
+        <Button
           type="Submit"
           variant="contained"
           isLoading={isLoading}
@@ -130,7 +129,7 @@ function App() {
           loadingPosition="start"
         >
           Submit
-        </ButtonLoader>
+        </Button>
       </div>
     </FormWrapper>
   );

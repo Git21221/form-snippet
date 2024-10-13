@@ -6,6 +6,7 @@ import {
   SelectInput,
   ButtonGroup,
   ButtonDropdown,
+  Skeleton
 } from "@git21221/form-snippet";
 import { months, dates, years, skills, options } from "./data/data";
 
@@ -127,9 +128,14 @@ function App() {
           isLoading={isLoading}
           disableElevation
           loadingPosition="start"
+          size="large"
         >
           Submit
         </Button>
+        <Skeleton variant="circular"  />
+        <Skeleton variant="text" />
+        <Skeleton animation="wave" />
+        <Skeleton animation={false} />
       </div>
     </FormWrapper>
   );

@@ -132,10 +132,10 @@ function App() {
         >
           Submit
         </Button>
-        <Skeleton variant="circular"  />
-        <Skeleton variant="text" />
-        <Skeleton animation="wave" />
-        <Skeleton animation={false} />
+        <Skeleton variant="circular"/>
+        <Skeleton variant="text" width={370} height={40} animationDuration={1000} animation="pulse" backgroundColor="blue"/>
+        <Skeleton variant="rectangular" borderRadius={10} animation="wave"  size="large"/>
+        <Skeleton animation="wave" width={370} height={40} gradientColors={["#fdcccc", "#ffe6e6", "#ffcccc"]}/>
       </div>
     </FormWrapper>
   );

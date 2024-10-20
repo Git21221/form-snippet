@@ -135,7 +135,7 @@ Please adhere to this project's [code of conduct](./CODE_OF_CONDUCT.md).
   <tr>
     <td align="center">
       <a href="https://github.com/Git21221/">
-        <img src="https://media.licdn.com/dms/image/D5603AQEoUyTNIj8ktg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1719649955614?e=1734566400&v=beta&t=dlqyhLIKaVLoqPk3d32d-Ltst471Td8fPo6_S-kAJ2o" width="150px" height="150px" />
+        <img src="https://avatars.githubusercontent.com/u/101005577?v=4" width="150px" height="150px" />
       </a>
       <br>
       <h4 style="color:red;">SAIKAT DAS</h4>

@@ -127,20 +127,33 @@ See [contributing.md](./CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [code of conduct](./CODE_OF_CONDUCT.md).
 
-## Authors
+## 📞 **Contact Information**
 
-Original author of `form-snippet`
+### Project Admin⚡
 
-- Saikat Das [(@git21221)](https://www.github.com/git21221)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Git21221/">
+        <img src="https://media.licdn.com/dms/image/D5603AQEoUyTNIj8ktg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1719649955614?e=1734566400&v=beta&t=dlqyhLIKaVLoqPk3d32d-Ltst471Td8fPo6_S-kAJ2o" width="150px" height="150px" />
+      </a>
+      <br>
+      <h4 style="color:red;">SAIKAT DAS</h4>
+      <a href="https://www.linkedin.com/in/saikat-das-794711243/">
+        <img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px" />
+      </a>
+    </td>
+  </tr>
+</table>
+
+Got questions? Want to suggest improvements? Open an issue on GitHub or contact the project admin, **Saikat Das**, at:  
+📧 **saikatdas40g@gmail.com**
+
+
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## 📞 Contact
 
-If you have any questions, suggestions, or feedback, feel free to reach out!
-
-- ✉️ Gmail: [saikatdas40g@gmail.com](mailto:saikatdas40g@gmail.com)
-- 🔗 LinkedIn: [in/saikat-das-794711243](https://www.linkedin.com/in/saikat-das-794711243)
 

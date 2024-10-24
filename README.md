@@ -2,6 +2,15 @@
 
 `form-snippet` is a React package that provides a simple and flexible way to handle forms with custom components.
 
+## Table of Contents 📚
+
+- [Badges](#badges)
+- [Installation](#installation)
+- [Usage/Examples](#usageexamples)
+- [Contributing](#contributing)
+- [📞 Contact Information](#-contact-information)
+- [License](#license)
+
 ## Badges
 
 | [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![form-snippet](https://img.shields.io/npm/v/form-snippet.svg)](https://www.npmjs.com/package/form-snippet) | ![NPM Downloads](https://img.shields.io/npm/dm/form-snippet) | ![npm bundle size](https://img.shields.io/bundlephobia/min/form-snippet) |
@@ -127,12 +136,33 @@ See [contributing.md](./CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [code of conduct](./CODE_OF_CONDUCT.md).
 
-## Authors
+## 📞 **Contact Information**
 
-Original author of `form-snippet`
+### Project Admin⚡
 
-- Saikat Das [(@git21221)](https://www.github.com/git21221)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Git21221/">
+        <img src="https://avatars.githubusercontent.com/u/101005577?v=4" width="150px" height="150px" />
+      </a>
+      <br>
+      <h4 style="color:red;">SAIKAT DAS</h4>
+      <a href="https://www.linkedin.com/in/saikat-das-794711243/">
+        <img src="https://img.icons8.com/fluency/2x/linkedin.png" width="32px" height="32px" />
+      </a>
+    </td>
+  </tr>
+</table>
+
+Got questions? Want to suggest improvements? Open an issue on GitHub or contact the project admin, **Saikat Das**, at:  
+📧 **saikatdas40g@gmail.com**
+
+
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+

@@ -2,6 +2,15 @@
 
 `form-snippet` is a React package that provides a simple and flexible way to handle forms with custom components.
 
+## Table of Contents 📚
+
+- [Badges](#badges)
+- [Installation](#installation)
+- [Usage/Examples](#usageexamples)
+- [Contributing](#contributing)
+- [📞 Contact Information](#-contact-information)
+- [License](#license)
+
 ## Badges
 
 | [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/) | [![form-snippet](https://img.shields.io/npm/v/form-snippet.svg)](https://www.npmjs.com/package/form-snippet) | ![NPM Downloads](https://img.shields.io/npm/dm/form-snippet) | ![npm bundle size](https://img.shields.io/bundlephobia/min/form-snippet) |

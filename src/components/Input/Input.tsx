@@ -1,133 +1,137 @@
-import * as React from "react";
-import { Controller, useFormContext, ValidateResult } from "react-hook-form";
-import TextField from "@mui/material/TextField";
-import { IconButton, InputAdornment } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useState, type ReactElement } from 'react';
+import { Controller, useFormContext, type ValidateResult } from 'react-hook-form';
+import { TextField, IconButton, InputAdornment } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-/**
- * @typedef {Object} MultilineConfig
- * @property {number} [staticRow] - Number of rows for the multiline Input component.
- * @property {boolean} [flexible] - Whether the multiline Input component is flexible with maxRows.
- */
+// Type definitions
+type InputVariant = 'outlined' | 'filled' | 'standard';
+type InputSize = 'small' | 'medium';
+type InputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'date'
+  | 'time'
+  | 'datetime-local'
+  | 'month'
+  | 'week'
+  | 'color';
 
-/**
- * @typedef {Object} InputProps
- * @property {Record<string, any>} [sx] - custom style for the Input component
- * @property {string} label - label for the Input component
- * @property {string} name - name of the Input component (used for form control)
- * @property {"text" | "password" | "email" | "number" | "tel" | "url" | "search" | "date" | "time" | "datetime-local" | "month" | "week" | "color"} [type] - type of the Input component
- * @property {"outlined" | "filled" | "standard"} [variant] - variant of the Input component
- * @property {"small" | "medium"} [size] - size of the Input component
- * @property {boolean} [disabled] - whether the Input component is disabled
- * @property {boolean} [readOnly] - whether the Input component is read-only
- * @property {number} [minLength] - minimum length of the Input component
- * @property {number} [maxLength] - maximum length of the Input component
- * @property {boolean} [fullWidth] - whether the Input component is full width
- * @property {{ value: RegExp; message: string; }} [pattern] - The regular expression pattern for the Input component
- * @property {(value: any) => ValidateResult | Promise<ValidateResult>} [customValidation] - custom validation function for the Input component
- * @property {boolean} [required] - whether the Input component is required
- * @property {string} [defaultValue] - default value for the Input component
- * @property {Object} [multiline] - multiline configuration for the Input component
- * @property {number} [multiline.staticRow] - number of rows for the multiline Input component. If provided, the Input component will be multiline for a fixed number of rows.
- * @property {boolean} [multiline.flexible] - whether the multiline Input component is flexible. If provided, the Input component will be multiline with a flexible number of rows (1 to maxRows).
- * @property {string | React.ReactElement} [startIcon] - icon or text to display at the start of the Input component
- * @property {string | React.ReactElement} [endIcon] - icon or text to display at the end of the Input component
- * @property {"on" | "off"} [autoComplete] - whether the Input component should have autocomplete enabled
- */
+interface MultilineConfig {
+  staticRow?: number;
+  flexible?: number; // Changed to number to specify max rows
+}
 
-/**
- * A wrapper around the Material-UI TextField component that integrates with react-hook-form for a better validation.
- * @param {InputProps} props - The props of the Input component
- * @returns {JSX.Element} - The JSX element of the Input component
- */
+interface ValidationPattern {
+  value: RegExp;
+  message: string;
+}
 
-export type InputProps = {
+interface InputProps {
   sx?: Record<string, any>;
   label: string;
   name: string;
-  /**
-   * @param {{type: "text" | "password" | "email" | "number" | "tel" | "url" | "search" | "date" | "time" | "datetime-local" | "month" | "week" | "color"}}
-   */
-  type?:
-    | "text"
-    | "password"
-    | "email"
-    | "number"
-    | "tel"
-    | "url"
-    | "search"
-    | "date"
-    | "time"
-    | "datetime-local"
-    | "month"
-    | "week"
-    | "color";
-  /**
-   * @param {{variant: "outlined" | "filled" | "standard"}}
-   */
-  variant?: "outlined" | "filled" | "standard";
-  /**
-   * @param {{size: "small" | "medium"}}
-   */
-  size?: "small" | "medium";
+  type?: InputType;
+  variant?: InputVariant;
+  size?: InputSize;
   disabled?: boolean;
   readOnly?: boolean;
   minLength?: number;
   maxLength?: number;
   fullWidth?: boolean;
-  pattern?: {
-    value: RegExp;
-    message: string;
-  };
+  pattern?: ValidationPattern;
   customValidation?: (value: any) => ValidateResult | Promise<ValidateResult>;
   required?: boolean;
   defaultValue?: string;
-  multiline?: any;
-  startIcon?: string | React.ReactElement;
-  endIcon?: string | React.ReactElement;
-  /**
-   * @param {{autoComplete: "on" | "off"}}
-   */
-  autoComplete?: "on" | "off";
-};
+  multiline?: MultilineConfig;
+  startIcon?: string | ReactElement;
+  endIcon?: string | ReactElement;
+  autoComplete?: 'on' | 'off';
+}
 
-function Input({
+// Constants
+const DEFAULT_MIN_LENGTH = 0;
+const DEFAULT_MAX_LENGTH = 150;
+const DEFAULT_VARIANT: InputVariant = 'outlined';
+const DEFAULT_SIZE: InputSize = 'small';
+
+export const Input = ({
   sx,
-  type,
+  type = 'text',
   label,
   name,
-  variant,
-  size,
-  disabled,
-  readOnly,
-  minLength = 0,
-  maxLength = 150,
-  fullWidth,
+  variant = DEFAULT_VARIANT,
+  size = DEFAULT_SIZE,
+  disabled = false,
+  readOnly = false,
+  minLength = DEFAULT_MIN_LENGTH,
+  maxLength = DEFAULT_MAX_LENGTH,
+  fullWidth = false,
   pattern,
   customValidation,
-  required,
-  defaultValue,
+  required = false,
+  defaultValue = '',
   multiline,
   startIcon,
   endIcon,
   autoComplete,
-}: InputProps) {
+}: InputProps): JSX.Element => {
   const {
     control,
     formState: { errors },
   } = useFormContext();
 
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleShowPasswordClick = () => setShowPassword(!showPassword);
-  const handleMouseDownPassword = (e: React.MouseEvent<HTMLButtonElement>) =>
-    e.preventDefault();
+  const handleShowPasswordClick = () => setShowPassword((prev) => !prev);
+  
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const getInputType = () => {
+    if (type === 'password') {
+      return showPassword ? 'text' : 'password';
+    }
+    return type;
+  };
+
+  const renderPasswordToggle = () => (
+    <IconButton
+      aria-label="toggle password visibility"
+      onClick={handleShowPasswordClick}
+      onMouseDown={handleMouseDownPassword}
+      edge="end"
+    >
+      {showPassword ? <VisibilityOff /> : <Visibility />}
+    </IconButton>
+  );
+
+  const renderEndAdornment = () => {
+    if (!endIcon && type !== 'password') return null;
+
+    return (
+      <InputAdornment position="end">
+        {type === 'password' ? renderPasswordToggle() : endIcon}
+      </InputAdornment>
+    );
+  };
+
+  const renderStartAdornment = () => {
+    if (!startIcon) return null;
+
+    return <InputAdornment position="start">{startIcon}</InputAdornment>;
+  };
+
   return (
     <Controller
       control={control}
       name={name}
-      defaultValue={defaultValue || ""}
+      defaultValue={defaultValue}
       rules={{
         required: required && `${label} is required`,
         minLength: minLength && {
@@ -146,54 +150,31 @@ function Input({
       }}
       render={({ field }) => (
         <TextField
-          sx={sx}
-          type={showPassword && type === "password" ? "text" : type || "text"}
-          disabled={disabled}
           {...field}
+          sx={sx}
+          type={getInputType()}
+          disabled={disabled}
           id={name}
           label={label}
           fullWidth={fullWidth}
-          variant={variant || "outlined"}
-          size={size || "small"}
-          value={field.value || ""}
+          variant={variant}
+          size={size}
+          value={field.value || ''}
           error={!!errors[name]}
-          helperText={errors[name]?.message}
+          helperText={errors[name]?.message as string}
           onBlur={field.onBlur}
           required={required}
           autoComplete={autoComplete}
           multiline={!!multiline}
-          {...(multiline?.staticRow && { rows: multiline.staticRow })}
-          {...(multiline?.flexible && { maxRows: multiline.flexible })}
+          rows={multiline?.staticRow}
+          maxRows={multiline?.flexible}
           InputProps={{
             readOnly,
-            ...(startIcon && {
-              startAdornment: (
-                <InputAdornment position="start">{startIcon}</InputAdornment>
-              ),
-            }),
-            ...(endIcon && {
-              endAdornment: (
-                <InputAdornment position="end">
-                  {type === "password" ? (
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleShowPasswordClick}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  ) : (
-                    endIcon
-                  )}
-                </InputAdornment>
-              ),
-            }),
+            startAdornment: renderStartAdornment(),
+            endAdornment: renderEndAdornment(),
           }}
         />
       )}
     />
   );
-}
-
-export { Input };
+};
